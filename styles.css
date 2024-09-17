@@ -20,7 +20,7 @@ body {
     background-color: steelblue;
 }
 
-.display-container {
+.display {
     height: 2em;
     align-content: center;
     text-align: right;
