@@ -53,14 +53,29 @@ function operate () {
         result = divide(firstNumber, secondNumber);
     }
     
-    display.textContent = result;
-    firstNumber = result;
-    secondNumber = '';
+    if (result === "Error, cannot divide by 0") {
+        console.log('error');
+        console.log(result);
+        display.textContent = result;
+        secondNumber = '';
+        currentOperator = null;
+        return;
+    } 
+        display.textContent = result;
+        firstNumber = result;
+        secondNumber = '';
+        console.log(firstNumber);
 }
 
 //Event listeners
 number.forEach(number => {
     number.addEventListener('click', () => {
+        if (display.textContent === "Error, cannot divide by 0") {
+            secondNumber = '';
+            currentOperator = null;
+            display.textContent = firstNumber;
+        }
+        
         if (currentOperator === null) {
             firstNumber += number.textContent;
             display.textContent = firstNumber;
@@ -73,6 +88,13 @@ number.forEach(number => {
 
 operator.forEach(operator => {
     operator.addEventListener('click', () => {
+        if (display.textContent === "Error, cannot divide by 0") {
+            secondNumber = '';
+            currentOperator = null;
+            display.textContent = firstNumber;
+    
+        }
+
         if (currentOperator === null) {
             currentOperator = operator.textContent;
             display.textContent = `${firstNumber} ${currentOperator}`;
@@ -80,6 +102,9 @@ operator.forEach(operator => {
             newOperator = operator.textContent;
             if (currentOperator !== null && firstNumber !== '' && secondNumber !== '') {
                 operate();
+            }
+            if (display.textContent === "Error, cannot divide by 0") {
+                return;
             }
             currentOperator = newOperator;
             display.textContent = `${firstNumber} ${currentOperator}`;
@@ -90,7 +115,7 @@ operator.forEach(operator => {
 equals.addEventListener('click', () => {
     operate();
     currentOperator = null;
-    display.textContent = `${firstNumber}`
+    // display.textContent = `${firstNumber}`
 })
 
 clear.addEventListener('click', () => {
