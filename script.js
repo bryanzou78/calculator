@@ -28,7 +28,11 @@ function multiply (num1, num2) {
 
 //Divide function
 function divide (num1, num2) {
-    return parseFloat(num1) / parseFloat(num2);
+    if (num2 === '0') {
+        return "Error, cannot divide by 0";
+    } else {
+        return parseFloat(num1) / parseFloat(num2);
+    }
 }
 
 //Operate function
@@ -48,14 +52,10 @@ function operate () {
     } else if (currentOperator === '/') {
         result = divide(firstNumber, secondNumber);
     }
-    console.log(result);
+    
     display.textContent = result;
     firstNumber = result;
     secondNumber = '';
-
-    if (currentOperator !== null) {
-        display.textContent = `${firstNumber} ${currentOperator}`;
-    }
 }
 
 //Event listeners
