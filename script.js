@@ -101,6 +101,18 @@ clear.addEventListener('click', () => {
 })
 
 deleteBtn.addEventListener('click', () => {
-
+    if (secondNumber !== '') {
+        secondNumber = secondNumber.slice(0, -1);
+        display.textContent = `${firstNumber} ${currentOperator} ${secondNumber}`
+    } else if (currentOperator !== null) {
+        currentOperator = null;
+        display.textContent = `${firstNumber}`;
+    } else if (firstNumber !== '' && firstNumber.length > 1) {
+        firstNumber = firstNumber.slice(0, -1);
+        display.textContent = firstNumber;
+    } else if (firstNumber.length = 1) {
+        firstNumber = '';
+        display.textContent = 0;
+    }
 })
 
