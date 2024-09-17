@@ -33,6 +33,10 @@ function divide (num1, num2) {
 
 //Operate function
 function operate () {
+    if (currentOperator === null || secondNumber === '') {
+        return;
+    }
+
     let result;
 
     if (currentOperator === '+') {
