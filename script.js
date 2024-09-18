@@ -1,6 +1,7 @@
 //Variables
 const display = document.querySelector('.display');
 const number = document.querySelectorAll('.number-btn');
+const decimal = document.querySelector('.decimal-btn');
 const operator = document.querySelectorAll('.operator-btn');
 const equals = document.querySelector('.equals-btn');
 const clear = document.querySelector('.clear-btn');
@@ -86,13 +87,24 @@ number.forEach(number => {
     })
 })
 
+decimal.addEventListener('click', () => {
+    if (currentOperator === null) {
+        if (!firstNumber.includes('.')) {
+            firstNumber += decimal.textContent;
+            display.textContent = firstNumber;
+        }
+    } else if (!secondNumber.includes('.')) {
+        secondNumber += decimal.textContent;
+        display.textContent = `${firstNumber} ${currentOperator} ${secondNumber}`;
+    }
+})
+
 operator.forEach(operator => {
     operator.addEventListener('click', () => {
         if (display.textContent === "Error, cannot divide by 0") {
             secondNumber = '';
             currentOperator = null;
             display.textContent = firstNumber;
-    
         }
 
         if (currentOperator === null) {
