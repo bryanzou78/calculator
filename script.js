@@ -55,8 +55,6 @@ function operate () {
     }
     
     if (result === "Error, cannot divide by 0") {
-        console.log('error');
-        console.log(result);
         display.textContent = result;
         secondNumber = '';
         currentOperator = null;
@@ -65,7 +63,6 @@ function operate () {
         display.textContent = result;
         firstNumber = result;
         secondNumber = '';
-        console.log(firstNumber);
 }
 
 //Event listeners
@@ -127,7 +124,6 @@ operator.forEach(operator => {
 equals.addEventListener('click', () => {
     operate();
     currentOperator = null;
-    // display.textContent = `${firstNumber}`
 })
 
 clear.addEventListener('click', () => {
