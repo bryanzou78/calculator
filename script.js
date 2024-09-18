@@ -12,6 +12,13 @@ let secondNumber = '';
 let currentOperator = null;
 let newOperator = null;
 
+
+
+//Functions
+function scrollToEnd() {
+    display.scrollLeft = display.scrollWidth;
+}
+
 //Add function
 function add (num1, num2) {
     return parseFloat(num1) + parseFloat(num2);
@@ -63,6 +70,7 @@ function operate () {
         display.textContent = result;
         firstNumber = result;
         secondNumber = '';
+        scrollToEnd();
 }
 
 //Event listeners
@@ -81,6 +89,7 @@ number.forEach(number => {
             secondNumber += number.textContent;
             display.textContent = `${firstNumber} ${currentOperator} ${secondNumber}`;
         }
+        scrollToEnd();
     })
 })
 
@@ -94,6 +103,7 @@ decimal.addEventListener('click', () => {
         secondNumber += decimal.textContent;
         display.textContent = `${firstNumber} ${currentOperator} ${secondNumber}`;
     }
+    scrollToEnd();
 })
 
 operator.forEach(operator => {
@@ -118,6 +128,7 @@ operator.forEach(operator => {
             currentOperator = newOperator;
             display.textContent = `${firstNumber} ${currentOperator}`;
         }
+        scrollToEnd();
     })
 })
 
